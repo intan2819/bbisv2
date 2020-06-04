@@ -55,7 +55,9 @@
 
       ?>
 
-      <form method="POST" action="add_bloodbag_process.php">
+      <h3>Add New Blood Bag</h3>
+
+      <form method="POST" action="add_bloodbag_process.php" class="form-style">
 
         <input type="hidden" name="productID" value="<?php echo $productID; ?>">
 
@@ -94,12 +96,10 @@
 
         <div class="pull-right">
           <button type="submit" class="btn btn-danger">Add</button> 
-          <a href="bloodbag.php?id=<?php echo $productID; ?>" class="btn btn-default" role="button">Cancel</a>
+          <a href="bloodbag.php?id=<?php echo $productID; ?>" class="btn btn-default" role="button">Back</a>
         </div>
 
       </form>
-
-      
 
       <?php include('../logout.php'); ?>
 

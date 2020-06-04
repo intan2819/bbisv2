@@ -67,27 +67,24 @@
 
       ?>
 
+      <h3>Product Inventory</h3>
+
       <div class="pull-right">
         <form class="form-inline" method="POST" action="search_inventory.php">
           <input type="hidden" name="productID" value="<?php echo $productID; ?>">
-          <div class="form-group">
-            <select class="form-control" name="category" required>
-              <option value="" disabled selected>Select Category</option>
-              <option value="bagID">Bloodbag ID</option>
-              <option value="donor">Donor</option>
-              <option value="bloodType">Blood Type</option>
-            </select>
-          </div>
           <div class="input-group">
             <input type="text" class="form-control" name="keyword" required>
             <span class="input-group-btn">
-              <button class="btn btn-danger" type="submit">Search</button>
+              <button class="btn btn-danger" type="submit">Search Blood Bag</button>
             </span>
           </div>
+
+          <a class="btn btn-danger" href="add_bloodbag.php?id=<?php echo $productID; ?>" role="button">New Blood Bag</a>
+
         </form>
       </div>
 
-      <h3>Product Inventory</h3><br>
+      <div class="table-container">
 
         <div class="row">
           <div class="col-md-2"><b>Product</b>:</div>
@@ -115,14 +112,14 @@
             <td><?php echo $rowCount; ?></td>
             <td><?php echo $row['displayBloodbagID']; ?></td>
             <td><?php echo $row['bloodType']; ?></td>
-            <td><?php echo $row['name'];; ?></td>
+            <td><?php echo $row['name']; ?></td>
             <td><?php echo $row['retrievedDate']; ?></td>
             <td><?php echo $row['expiryDate']; ?></td>
             <td><?php echo $row['dateCreated']; ?></td>
             <td><?php echo $row['lastEdited']; ?></td>
-            <td><a href="edit_bloodbag.php?id=<?php echo $row['id']; ?>">Edit</a></td>
+            <td><a href="edit_bloodbag.php?id=<?php echo $row['id']; ?>" class="page-link">Edit</a></td>
             <td>
-            <a href="#" data-toggle="modal" data-target="#myModal-<?php echo $row['id']; ?>">Delete</a>
+            <a href="#" class="page-link" data-toggle="modal" data-target="#myModal-<?php echo $row['id']; ?>">Delete</a>
             <!-- Modal -->
             <div class="modal fade" id="myModal-<?php echo $row['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
               <div class="modal-dialog" role="document">
@@ -161,8 +158,9 @@
 
         </table>
 
+      </div>
+
         <div class="pull-right">
-          <a href="add_bloodbag.php?id=<?php echo $productID; ?>" class="btn btn-danger" role="button">Add Blood Bag</a>
           <a href="product_inventory.php?id=<?php echo $productData['componentID'] ?>" class="btn btn-default" role="button">Back</a>
         </div>
         

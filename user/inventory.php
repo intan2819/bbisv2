@@ -54,7 +54,7 @@
 
       ?>
 
-      <h3>Inventory Overview</h3><br>
+      <h3>Inventory</h3><br>
             
         <table class="table">
 
@@ -67,7 +67,7 @@
           <?php while($row = mysqli_fetch_assoc($result)) :?>
           <tr>
             <td><?php echo $rowCount; ?></td>
-            <td><a href="product_inventory.php?id=<?php echo $row['id']; ?>"><?php echo $row['name']; ?></a></td>
+            <td><a href="product_inventory.php?id=<?php echo $row['id']; ?>" class="page-link"><?php echo $row['name']; ?></a></td>
             <td><?php echo $row['numOfBloodBag']; ?></td>
           </tr>
 

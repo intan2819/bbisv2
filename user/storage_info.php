@@ -104,6 +104,8 @@
 
       ?>
 
+      <h3>Storage Info</h3><br>
+
       <div class="panel panel-danger">
         <div class="panel-heading">Expired Bloodbag (<?php echo date("d-m-Y H:i:s"); ?>)</div>
         <div class="panel-body">

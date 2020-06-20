@@ -52,6 +52,8 @@
 
       ?>
 
+      <h3>Transaction</h3>
+
       <div class="pull-right">
         <form class="form-inline" method="POST" action="search_transaction.php">
           <div class="form-group">
@@ -73,7 +75,8 @@
         </form>
       </div>
 
-      <h3>Transaction</h3><br>
+
+      <div class="table-container">
 
         <table class="table">
 
@@ -89,7 +92,7 @@
           <?php while($row = mysqli_fetch_assoc($result)) :?>
           <tr>
             <td><?php echo $rowCount; ?></td>
-            <td><a href="transaction_details.php?id=<?php echo $row['id']; ?>"><?php echo $row['displayTransactionID']; ?></a></td>
+            <td><a class="page-link" href="transaction_details.php?id=<?php echo $row['id']; ?>"><?php echo $row['displayTransactionID']; ?></a></td>
             <td><?php echo $row['transaction']; ?></td>
             <td><?php echo $row['hospitalName']; ?></td>
             <td><?php echo $row['name']; ?></td>
@@ -104,6 +107,8 @@
           ?>
 
         </table>
+
+      </div>
 
       <?php include('../logout.php'); ?>
 

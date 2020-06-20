@@ -61,6 +61,8 @@
 
       ?>
 
+      <h3>List Of Donors</h3>
+
       <div class="pull-right">
         <form class="form-inline" method="POST" action="search_donor.php">
           <div class="form-group">
@@ -83,72 +85,74 @@
         </form>
       </div>
 
-      <br><br><br>
+      <div class="table-container">
 
-      <table class="table">
+        <table class="table">
 
-        <thead>
-          <tr>
-          <th>Name</th>
-          <th>I/C Number</th>
-          <th>Gender</th>
-          <th>Age</th>
-          <th>Blood Type</th>
-          <th>Telephone Number</th>
-          <th>Email</th>
-          <th>Date Registered</th>
-          <th>Last Updated</th>
-          <th colspan="2">Action</th>
-          </tr>
-        </thead>
-      
-        <tbody>
-          <?php while($row = mysqli_fetch_assoc($result)) :?>
-          <tr>
-          <td><?php echo $row['name']; ?></td>
-          <td><?php echo $row['icNumber']; ?></td>
-          <td><?php echo $row['gender']; ?></td>
-          <td><?php
+          <thead>
+            <tr>
+            <th>Name</th>
+            <th>I/C Number</th>
+            <th>Gender</th>
+            <th>Age</th>
+            <th>Blood Type</th>
+            <th>Telephone Number</th>
+            <th>Email</th>
+            <th>Date Registered</th>
+            <th>Last Updated</th>
+            <th colspan="2">Action</th>
+            </tr>
+          </thead>
+        
+          <tbody>
+            <?php while($row = mysqli_fetch_assoc($result)) :?>
+            <tr>
+            <td><?php echo $row['name']; ?></td>
+            <td><?php echo $row['icNumber']; ?></td>
+            <td><?php echo $row['gender']; ?></td>
+            <td><?php
 
-            $birthYear = date('Y', strtotime($row['birthDate']));
+              $birthYear = date('Y', strtotime($row['birthDate']));
 
-            $currentYear = date('Y');
+              $currentYear = date('Y');
 
-            echo $currentYear - $birthYear;
+              echo $currentYear - $birthYear;
 
-          ?></td>
-          <td><?php echo $row['bloodType']; ?></td>
-          <td><?php echo $row['phoneNumber']; ?></td>
-          <td><?php echo $row['emailAddress']; ?></td>
-          <td><?php echo $row['dateRegistered']; ?></td>
-          <td><?php echo $row['lastUpdated']; ?></td>
-          <td><a href="edit_donor.php?id=<?php echo $row['id']; ?>">Edit</a></td>
-          <td>
-            <a href="#" data-toggle="modal" data-target="#myModal-<?php echo $row['id']; ?>">Delete</a>
-            <!-- Modal -->
-            <div class="modal fade" id="myModal-<?php echo $row['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Delete donor: <b><?php echo $row['name'].' - '.$row['icNumber']; ?></b></h4>
-                  </div>
-                  <div class="modal-body">
-                    You are about to delete <b><?php echo $row['name'].' - '.$row['icNumber']; ?></b> from BBIS donor list. Click confirm to proceed.
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-danger" href="delete_donor.php?id=<?php echo $row['id']; ?>" role="button">Confirm</a>
+            ?></td>
+            <td><?php echo $row['bloodType']; ?></td>
+            <td><?php echo $row['phoneNumber']; ?></td>
+            <td><?php echo $row['emailAddress']; ?></td>
+            <td><?php echo $row['dateRegistered']; ?></td>
+            <td><?php echo $row['lastUpdated']; ?></td>
+            <td><a href="edit_donor.php?id=<?php echo $row['id']; ?>" class="page-link">Edit</a></td>
+            <td>
+              <a href="#" class="page-link" data-toggle="modal" data-target="#myModal-<?php echo $row['id']; ?>">Delete</a>
+              <!-- Modal -->
+              <div class="modal fade" id="myModal-<?php echo $row['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      <h4 class="modal-title" id="myModalLabel">Delete donor: <b><?php echo $row['name'].' - '.$row['icNumber']; ?></b></h4>
+                    </div>
+                    <div class="modal-body">
+                      You are about to delete <b><?php echo $row['name'].' - '.$row['icNumber']; ?></b> from BBIS donor list. Click confirm to proceed.
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                      <a class="btn btn-danger" href="delete_donor.php?id=<?php echo $row['id']; ?>" role="button">Confirm</a>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </td>
-          </tr>
-          <?php endwhile; ?>   
-        </tbody>
+            </td>
+            </tr>
+            <?php endwhile; ?>   
+          </tbody>
 
-      </table>
+        </table>
+
+      </div>
 
       <?php include('../logout.php'); ?>
 

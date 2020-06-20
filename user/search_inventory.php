@@ -41,21 +41,68 @@
 
         include ('../config.php');
 
+        $category = $_POST['category'];
         $productID = $_POST['productID'];
         $keyword = $_POST['keyword'];
         
-        $sql = "SELECT donors.id AS donorID, donors.name, bloodbag.id, bloodbag.displayBloodbagID, bloodbag.bloodType, bloodbag.retrievedDate, bloodbag.expiryDate, bloodbag.dateCreated, bloodbag.lastEdited
+        /*$sql = "SELECT donors.id AS donorID, donors.name, bloodbag.id, bloodbag.displayBloodbagID, bloodbag.bloodType, bloodbag.retrievedDate, bloodbag.expiryDate, bloodbag.dateCreated, bloodbag.lastEdited
           FROM donors LEFT JOIN bloodbag 
           ON donors.id = bloodbag.donorID
           WHERE bloodbag.productID = $productID AND bloodbag.status = 'In Stock' AND (bloodbag.displayBloodbagID LIKE '$keyword' OR bloodbag.bloodType LIKE '$keyword' OR donors.name LIKE '%$keyword%')";
     
-        $result = mysqli_query($con,$sql) or die("Cannot execute sql: ".mysqli_error($con));
+        $result = mysqli_query($con,$sql) or die("Cannot execute sql: ".mysqli_error($con));*/
 
         $sql1 = "SELECT * FROM products WHERE id = $productID";
 
         $result1 = mysqli_query($con,$sql1) or die("Cannot execute sql: ".mysqli_error($con));
 
         $productData = mysqli_fetch_assoc($result1);
+
+        if($category == 'bloodbagID'){
+
+          $displayCategory = 'Blood Bag ID';
+
+          $sql = "SELECT donors.id AS donorID, donors.name, bloodbag.id, bloodbag.displayBloodbagID, bloodbag.bloodType, bloodbag.retrievedDate, bloodbag.expiryDate, bloodbag.dateCreated, bloodbag.lastEdited
+          FROM donors LEFT JOIN bloodbag 
+          ON donors.id = bloodbag.donorID
+          WHERE bloodbag.productID = $productID AND bloodbag.status = 'In Stock' AND bloodbag.displayBloodbagID LIKE '$keyword'";
+    
+          $result = mysqli_query($con,$sql) or die("Cannot execute sql: ".mysqli_error($con));
+
+        }elseif($category == 'donorName'){
+
+          $displayCategory = 'Donor\'s Name';
+
+          $sql = "SELECT donors.id AS donorID, donors.name, bloodbag.id, bloodbag.displayBloodbagID, bloodbag.bloodType, bloodbag.retrievedDate, bloodbag.expiryDate, bloodbag.dateCreated, bloodbag.lastEdited
+          FROM donors LEFT JOIN bloodbag 
+          ON donors.id = bloodbag.donorID
+          WHERE bloodbag.productID = $productID AND bloodbag.status = 'In Stock' AND donors.name LIKE '%$keyword%'";
+    
+          $result = mysqli_query($con,$sql) or die("Cannot execute sql: ".mysqli_error($con));
+
+        }elseif($category == 'bloodType'){
+
+          $displayCategory = 'Blood Type';
+
+          $sql = "SELECT donors.id AS donorID, donors.name, bloodbag.id, bloodbag.displayBloodbagID, bloodbag.bloodType, bloodbag.retrievedDate, bloodbag.expiryDate, bloodbag.dateCreated, bloodbag.lastEdited
+          FROM donors LEFT JOIN bloodbag 
+          ON donors.id = bloodbag.donorID
+          WHERE bloodbag.productID = $productID AND bloodbag.status = 'In Stock' AND bloodbag.bloodType LIKE '%$keyword%'";
+    
+          $result = mysqli_query($con,$sql) or die("Cannot execute sql: ".mysqli_error($con));
+
+        }elseif($category == 'daysRetrieved'){
+
+          $displayCategory = 'Last (N) Days';
+
+          $sql = "SELECT donors.id AS donorID, donors.name, bloodbag.id, bloodbag.displayBloodbagID, bloodbag.bloodType, bloodbag.retrievedDate, bloodbag.expiryDate, bloodbag.dateCreated, bloodbag.lastEdited
+          FROM donors LEFT JOIN bloodbag 
+          ON donors.id = bloodbag.donorID
+          WHERE bloodbag.productID = $productID AND bloodbag.status = 'In Stock' AND (bloodbag.retrievedDate BETWEEN NOW() - INTERVAL $keyword DAY AND NOW())";
+    
+          $result = mysqli_query($con,$sql) or die("Cannot execute sql: ".mysqli_error($con));
+
+        }
         
         $rowCount = 1;
 
@@ -66,6 +113,15 @@
       <div class="pull-right">
         <form class="form-inline" method="POST" action="search_inventory.php">
           <input type="hidden" name="productID" value="<?php echo $productID; ?>">
+          <div class="form-group">
+            <select class="form-control" name="category" required>
+              <option value="" disabled selected>Select Category</option>
+              <option value="bloodbagID">Blood Bag ID</option>
+              <option value="donorName">Donor Name</option>
+              <option value="bloodType">Blood Type</option>
+              <option value="daysRetrieved">Last (N) Days</option>
+            </select>
+          </div>
           <div class="input-group">
             <input type="text" class="form-control" name="keyword" required>
             <span class="input-group-btn">
@@ -73,7 +129,7 @@
             </span>
           </div>
 
-          <a class="btn btn-danger" href="register_user.php" role="button">New Blood Bag</a>
+          <a class="btn btn-danger" href="add_bloodbag.php?id=<?php echo $productID; ?>" role="button">New Blood Bag</a>
 
         </form>
       </div>
@@ -81,7 +137,7 @@
       <div class="table-container">
 
         <div class="row">
-          <div class="col-lg-12"><p>Search result for <b><?php echo $keyword; ?></b>:</p></div>
+          <div class="col-lg-12"><p>Search result for <b><?php echo $keyword." in ".$displayCategory; ?> category: </b></p></div>
         </div>
 
         <br>

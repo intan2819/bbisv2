@@ -6,6 +6,7 @@
 	session_start();
 	
 	$id = $_POST['id'];
+	$displayBloodbagID = $_POST['displayBloodbagID'];
 	$productID = $_POST['productID'];
 	$bloodType = $_POST['bloodType'];
 	$donorID = $_POST['donorID'];
@@ -16,7 +17,7 @@
 	
 	$result = mysqli_query($con, $update_sql) or die("Update error: " .mysqli_error($con));
 
-	$_SESSION['bloodbagEditSuccess'] = 'Bloodbag '.$id.' info in the system had been successfully updated';
+	$_SESSION['bloodbagEditSuccess'] = 'Bloodbag '.$displayBloodbagID.' info in the system had been successfully updated';
 		
 	header("location:edit_bloodbag.php?id=$id");
 

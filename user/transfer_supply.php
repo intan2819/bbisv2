@@ -66,7 +66,9 @@
 
       ?>
 
-      <form method="POST" action="transfer_supply_process.php">
+      <h3>Transfer Blood Supply</h3>
+
+      <form method="POST" action="transfer_supply_process.php" class="form-style">
 
         <div class="form-group">
           <label for="hospitalID">Hospital</label>
@@ -131,7 +133,7 @@
 
         <div class="pull-right">
           <button type="submit" class="btn btn-danger">Transfer</button> 
-          <a href="transaction.php" class="btn btn-default" role="button">Cancel</a>
+          <a href="transaction.php" class="btn btn-default" role="button">Back</a>
         </div>
 
       </form>

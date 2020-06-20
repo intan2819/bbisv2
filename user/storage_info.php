@@ -148,7 +148,7 @@
 
         <br>
 
-        <div class="pull-right"><a href="expired_bloodbag.php">See More</a></div>
+        <div class="pull-right"><a href="expired_bloodbag.php" class="page-link">See More</a></div>
         <?php endif; ?>
 
         <?php if(mysqli_num_rows($result) == 0){

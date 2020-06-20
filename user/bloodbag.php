@@ -72,6 +72,15 @@
       <div class="pull-right">
         <form class="form-inline" method="POST" action="search_inventory.php">
           <input type="hidden" name="productID" value="<?php echo $productID; ?>">
+          <div class="form-group">
+            <select class="form-control" name="category" required>
+              <option value="" disabled selected>Select Category</option>
+              <option value="bloodbagID">Blood Bag ID</option>
+              <option value="donorName">Donor Name</option>
+              <option value="bloodType">Blood Type</option>
+              <option value="daysRetrieved">Last (N) Days</option>
+            </select>
+          </div>
           <div class="input-group">
             <input type="text" class="form-control" name="keyword" required>
             <span class="input-group-btn">

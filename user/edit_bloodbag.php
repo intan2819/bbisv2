@@ -49,6 +49,7 @@
 
         while($row = mysqli_fetch_assoc($result)){
 
+          $displayBloodbagID = $row['displayBloodbagID'];
           $productID = $row['productID'];
           $bloodType = $row['bloodType'];
           $donorID = $row['donorID'];
@@ -73,9 +74,18 @@
 
       ?>
 
-      <form method="POST" action="edit_bloodbag_process.php">
+      <h3>Edit Blood Bag Details</h3>
+
+      <form method="POST" action="edit_bloodbag_process.php" class="form-style">
 
         <input type="hidden" name="id" value="<?php echo $bloodbagID; ?>">
+
+        <input type="hidden" name="displayBloodbagID" value="<?php echo $displayBloodbagID; ?>">
+
+        <div class="form-group">
+          <label for="displayBloodbagID">Blood Bag ID</label>
+          <input type="text" name="displayBloodbagID" class="form-control" value="<?php echo $displayBloodbagID; ?>" disabled>
+        </div>
 
         <div class="form-group">
           <label>Product</label>
@@ -116,7 +126,7 @@
 
         <div class="pull-right">
           <button type="submit" class="btn btn-danger">Update</button> 
-          <a href="bloodbag.php?id=<?php echo $productID; ?>" class="btn btn-default" role="button">Cancel</a>
+          <a href="bloodbag.php?id=<?php echo $productID; ?>" class="btn btn-default" role="button">Back</a>
         </div>
 
       </form>

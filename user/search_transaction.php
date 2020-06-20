@@ -86,6 +86,8 @@
 
       ?>
 
+      <h3>Transaction</h3>
+
       <div class="pull-right">
         <form class="form-inline" method="POST" action="search_transaction.php">
           <div class="form-group">
@@ -102,12 +104,15 @@
               <button class="btn btn-danger" type="submit">Search</button>
             </span>
           </div>
+          <a href="transfer_supply.php" class="btn btn-danger" role="button">Transfer Supply</a>
         </form>
       </div>
 
-      <div class="row">
-        <div class="col-lg-12"><p>Search result for <b><?php echo $keyword."</b> in <b>".$displayCategory; ?></b> category: </p></div>
-      </div>
+      <div class="table-container">
+
+        <div class="row">
+          <div class="col-lg-12"><p>Search result for <b><?php echo $keyword."</b> in <b>".$displayCategory; ?></b> category: </p></div>
+        </div>
 
         <table class="table">
 
@@ -123,7 +128,7 @@
           <?php while($row = mysqli_fetch_assoc($result)) :?>
           <tr>
             <td><?php echo $rowCount; ?></td>
-            <td><a href="transaction_details.php?id=<?php echo $row['id']; ?>"><?php echo $row['displayTransactionID']; ?></a></td>
+            <td><a class="page-link" href="transaction_details.php?id=<?php echo $row['id']; ?>"><?php echo $row['displayTransactionID']; ?></a></td>
             <td><?php echo $row['transaction']; ?></td>
             <td><?php echo $row['hospitalName']; ?></td>
             <td><?php echo $row['name']; ?></td>
@@ -143,9 +148,7 @@
 
         </table>
 
-        <div class="pull-right">
-          <a href="add_transaction.php.php" class="btn btn-danger" role="button">New Transaction</a>
-        </div>
+      </div>
         
 
       <?php include('../logout.php'); ?>

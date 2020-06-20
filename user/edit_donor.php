@@ -68,7 +68,9 @@
 
       ?>
 
-      <form method="POST" action="edit_donor_process.php">
+      <h3>Edit Donor Details</h3>
+
+      <form method="POST" action="edit_donor_process.php" class="form-style">
 
         <input type="hidden" name="id" value="<?php echo $id; ?>">
 
@@ -121,7 +123,7 @@
 
         <div class="pull-right">
           <button type="submit" class="btn btn-danger">Update</button> 
-          <a href="donor.php" class="btn btn-default" role="button">Cancel</a>
+          <a href="donor.php" class="btn btn-default" role="button">Back</a>
         </div>
 
       </form>

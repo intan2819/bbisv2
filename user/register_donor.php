@@ -37,7 +37,9 @@
 
     <div class="container page-container">
 
-      <form method="POST" action="register_donor_process.php">
+      <h3>Register New Donor</h3>
+
+      <form method="POST" action="register_donor_process.php" class="form-style">
 
         <div class="form-group">
           <label for="name">Name</label>
@@ -88,7 +90,7 @@
 
         <div class="pull-right">
           <button type="submit" class="btn btn-danger">Register</button> 
-          <a href="donor.php" class="btn btn-default" role="button">Cancel</a>
+          <a href="donor.php" class="btn btn-default" role="button">Back</a>
         </div>
 
       </form>

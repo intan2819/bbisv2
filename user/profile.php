@@ -63,7 +63,7 @@
 
       ?>
 
-      <h4>User Profile</h4>
+      <h3>User Profile</h3>
 
       <div class="info-display">
 
@@ -99,7 +99,7 @@
 
         <div class="row">
           <div class="col-md-2"><b>Password</b>:</div>
-          <div class="col-md-4">*******[<a href="change_password.php">Change Password</a>]</div>
+          <div class="col-md-4">*******[<a href="change_password.php" class="page-link">Change Password</a>]</div>
         </div>
 
         <div class="row">
@@ -118,8 +118,8 @@
         </div>
 
         <div class="pull-right">
-          <a href="edit_profile.php" class="btn btn-danger" role="button">Edit Profile</a>
-          <a href="storage_feeds.php" class="btn btn-default" role="button">Cancel</a>
+          <a href="edit_profile.php" class="btn btn-danger" role="button">Update Profile</a>
+          <a href="storage_info.php" class="btn btn-default" role="button">Back</a>
         </div>
 
       </div>

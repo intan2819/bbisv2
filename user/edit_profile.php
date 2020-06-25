@@ -68,7 +68,9 @@
 
       ?>
 
-      <form method="POST" action="edit_profile_process.php">
+      <h3>Update User Profile</h3>
+
+      <form method="POST" action="edit_profile_process.php" class="form-style">
 
         <input type="hidden" name="id" value="<?php echo $id; ?>">
 
@@ -120,7 +122,7 @@
 
         <div class="pull-right">
           <button type="submit" class="btn btn-danger">Update</button> 
-          <a href="profile.php" class="btn btn-default" role="button">Cancel</a>
+          <a href="profile.php" class="btn btn-default" role="button">Back</a>
         </div>
 
       </form>

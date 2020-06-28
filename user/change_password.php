@@ -55,7 +55,9 @@
 
       ?>
 
-      <form method="POST" action="change_password_process.php">
+      <h3>Change Your Password</h3>
+
+      <form method="POST" action="change_password_process.php" class="form-style">
 
         <div class="form-group">
           <label>Current Password</label>
@@ -69,7 +71,7 @@
 
         <div class="pull-right">
           <button type="submit" class="btn btn-danger">Change Password</button> 
-          <a href="profile.php" class="btn btn-default" role="button">Cancel</a>
+          <a href="profile.php" class="btn btn-default" role="button">Back</a>
         </div>
 
       </form>

@@ -8,3 +8,5 @@ the blood bank to ensure constant availability of blood supply.
 2. Create a new database named 'bbisv2' on PhpMyAdmin and import bbisv2.sql to the database.
 3. Modify the variables in config.php file to match your host, database, username and password.
 4. The system then should be accessible on localhost/bbisv2/login.php.
+
+All feedback & contribution is very much appreaciated!
